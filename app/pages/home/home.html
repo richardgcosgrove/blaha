@@ -1,14 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Jason Blaha's Linear Hypertrophy Program
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <button ion-item *ngFor="let week of [1,2,3,4,5,6,7]" (click)="startWorkout(week)">Week {{week}}</button>
+  </ion-list>
 </ion-content>

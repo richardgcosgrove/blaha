@@ -10,32 +10,70 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class Routine {
-  data: any;
+  private _backExercise: string = 'deadlift';
+  private _firstIsolationExercise: string = 'side laterals';
+  private _secondIsolationExercise: string = 'curls';
+  private _count: number = 0;
+  private _cycle: number = 0;
+  private _nextWorkout: Date = new Date();
 
-  constructor(private http: Http) {
-    this.data = null;
+  constructor() {
   }
 
-  load() {
-    if (this.data) {
-      // already loaded data
-      return Promise.resolve(this.data);
-    }
+  public BackExercise(week: number = 0, count?: number): string {
+    const isDeadlift: boolean = 
+    (this.calculateSession(this.Cycle, week, count || this.Count) % 2) === 0;
 
-    // don't have the data yet
-    return new Promise(resolve => {
-      // We're using Angular Http provider to request the data,
-      // then on the response it'll map the JSON data to a parsed JS object.
-      // Next we process the data and resolve the promise with the new data.
-      this.http.get('path/to/data.json')
-        .map(res => res.json())
-        .subscribe(data => {
-          // we've got back the raw data, now generate the core schedule data
-          // and save the data for later reference
-          this.data = data;
-          resolve(this.data);
-        });
-    });
+    if (isDeadlift) {
+      return 'deadlift';
+    } else {
+      return 'barbell row';
+    }
+  }
+
+  private calculateSession(cycle: number = 0, week: number = 0, count: number = 0): number {
+    return cycle * 21 + week * 3 + count;
+  }
+
+  get Count(): number {
+    return this._count;
+  }
+
+  set Count(value: number) {
+    this._count = value;
+  }
+
+  get Cycle(): number {
+    return this._cycle;
+  }
+
+  set Cycle(value: number) {
+    this._cycle = value;
+  }
+
+
+
+  get FirstIsolationExercise(): string {
+    return this._firstIsolationExercise;
+  }
+
+  set FirstIsolationExercise(value: string) {
+    this._firstIsolationExercise = value;
+    this.updateStorage('first', value);
+  }
+
+  get SecondIsolationExercise(): string {
+    return this._secondIsolationExercise;
+  }
+
+  set SecondIsolationExercise(value: string) {
+    this._secondIsolationExercise = value;
+    this.updateStorage('second', value);
+    
+  }
+
+  private updateStorage(key: string, value: string) {
+
   }
 }
 

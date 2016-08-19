@@ -1,17 +1,17 @@
-
-<ion-list *ngFor="let set in sets">
+<ion-list *ngFor="let set of sets">
   <ion-item-sliding>
     <ion-item>
-      {{Name}}
+      <span class="exercise__label" primary>{{name}}</span>
+      <span class="exercise__weight"><span secondary>{{weight}}</span> * <span danger>{{reps}}</span></span>
     </ion-item>
-    <ion-item-options side="left" (ionSwipe)="failure($event)">
-      <button danger (click)="failure($event)">
-        <ion-icon name="checkmark"></ion-icon>
+    <ion-item-options side="left" (ionSwipe)="failure(set)">
+      <button danger (click)="failure(set)">
+        <ion-icon name="close"></ion-icon>
       </button>
     </ion-item-options>
-    <ion-item-options side="right" (ionSwipe)="success($event)">
-      <button danger (click)="success($event)">
-        <ion-icon name="close"></ion-icon>
+    <ion-item-options side="right" (ionSwipe)="successful(set)">
+      <button secondary (click)="successful(set)">
+        <ion-icon name="checkmark"></ion-icon>
       </button>
     </ion-item-options>
   </ion-item-sliding>

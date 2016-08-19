@@ -1,18 +1,12 @@
-<!--
-  Generated template for the WorkoutPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Workout</ion-title>
+    <ion-title>Week {{week}} Workout</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <exercise *ngFor="let name of exercises" [name]="name" [reps]="reps" [test]="test" (success)="exerciseFinished($event)" ></exercise>
+  </ion-list>
 </ion-content>
