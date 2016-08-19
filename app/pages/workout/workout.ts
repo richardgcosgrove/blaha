@@ -13,10 +13,10 @@ import {Weight} from '../../providers/weight/weight';
 @Component({
   inputs: ['exerciseFinished'],
   outputs: ['finished'],
-  templateUrl: 'build/pages/workout/workout.html',
-  selector: 'workout',
   providers: [Weight, Routine],
-  directives: [ExercisePage]
+  directives: [ExercisePage],
+  templateUrl: 'build/pages/workout/workout.html',
+  selector: 'workout'
 })
 export class WorkoutPage implements OnInit, AfterViewInit {
   reps: number = 5;

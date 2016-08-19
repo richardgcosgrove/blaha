@@ -208,10 +208,10 @@ var WorkoutPage = (function () {
         core_1.Component({
             inputs: ['exerciseFinished'],
             outputs: ['finished'],
-            templateUrl: 'build/pages/workout/workout.html',
-            selector: 'workout',
             providers: [weight_1.Weight, routine_1.Routine],
-            directives: [exercise_1.ExercisePage]
+            directives: [exercise_1.ExercisePage],
+            templateUrl: 'build/pages/workout/workout.html',
+            selector: 'workout'
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavParams, ionic_angular_1.NavController, routine_1.Routine, weight_1.Weight])
     ], WorkoutPage);
