@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Week {{week}} Workout</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <exercise *ngFor="let name of exercises" [name]="name" [reps]="reps" [test]="test" (success)="exerciseFinished($event)" ></exercise>
+  </ion-list>
+</ion-content>
